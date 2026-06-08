@@ -14,6 +14,7 @@ workflows:
       - name: Install npm dependencies
         script: |
           npm install
+          chmod +x node_modules/.bin/cap
       - name: Capacitor Sync
         script: |
           npx cap sync
@@ -23,4 +24,4 @@ workflows:
           pod install
           xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -sdk iphoneos -derivedDataPath build archive
     artifacts:
-      - ios/App/build/Build/Products/Debug-iphoneos/*.app
+      - ios/App/build/Build/Products/Debug-iphoneos/*.appה
