@@ -14,11 +14,6 @@ workflows:
       - name: Install npm dependencies
         script: |
           npm install
-      - name: Install Cap iOS platform
-        script: |
-          sudo npm install -g @capacitor/cli
-          npm install @capacitor/ios
-          npx cap add ios || true
       - name: Capacitor Sync
         script: |
           npx cap sync
@@ -29,4 +24,3 @@ workflows:
           xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -sdk iphoneos -derivedDataPath build archive
     artifacts:
       - ios/App/build/Build/Products/Debug-iphoneos/*.app
-      - ios/App/build/**/*.xcarchive
