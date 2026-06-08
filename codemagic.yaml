@@ -26,8 +26,7 @@ workflows:
         script: |
           cd ios/App
           pod install
-          xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -archivePath build/App.xcarchive archive
-          xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/outputs -exportOptionsPlist App/ExportOptions.plist || true
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -sdk iphoneos -derivedDataPath build archive
     artifacts:
-      - build/outputs/*.ipa
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/**/*.app
+      - ios/App/build/Build/Products/Debug-iphoneos/*.app
+      - ios/App/build/**/*.xcarchive
